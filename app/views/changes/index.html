@@ -1,0 +1,127 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Prototypes: Report a change to Carer's Allowance
+{% endblock %}
+
+{% block header %}
+
+  <div class="prototype-remove-blue-border-from-header">
+
+    {{ super() }}
+
+    <div class="prototype-home-top">
+
+      <div class="govuk-width-container">
+
+        <div class="govuk-grid-row">
+
+          <div class="govuk-grid-column-two-thirds">
+
+            <h1 class="govuk-heading-xl govuk-!-margin-bottom-4">Carer’s Allowance</h1>
+
+            <h1 class="govuk-heading-l govuk-!-font-weight-regular  govuk-!-margin-bottom-2">'Changes' prototypes</h1>
+
+          </div>
+
+        </div>
+      
+      </div>
+
+    </div>
+  
+  </div>
+
+{% endblock %}
+
+{% block beforeContent %}
+  {{ super() }}
+  {{ govukBackLink({
+    text: 'Back to prototype home',
+    href: '/'
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+
+      
+      {{ prototypeVersionCard({
+        ticket: 'ACA-571',
+        description: 'Accessibility statement',
+        statusTag: {
+            text: 'Draft', 
+            classes: 'govuk-tag--grey'
+        }
+      }) }}
+      
+      
+      {{ prototypeVersionCard({
+        ticket: 'ACA-409',
+        description: 'Accessibility statement',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        }
+      }) }}
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-380',
+        description: 'Changes to pay details page to address accessibility issues with sort code fields.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Fields changed to follow GDS design pattern'
+        ]
+      }) }}
+
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-299',
+        description: 'Changes to declaration page.',
+        statusTag: {
+            text: 'Experimental', 
+            classes: 'govuk-tag--red'
+        },
+        researchNotes: [
+          'Amendments to link text to be more descriptive to resolve accessibility issue.'
+        ]
+      }) }}
+
+      
+      {{ prototypeVersionCard({
+        ticket: 'ACA-180',
+        description: 'Updated end claim journey, including DP died.',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        },
+        researchNotes: [
+          'Need identified by UR',
+          'No research has been carried out on the proposed designs as of 21 May 2020'
+        ]
+      }) }}
+
+
+      {{ prototypeVersionCard({
+        ticket: 'ACA-178',
+        description: 'Updated end claim journey, including DP died.',
+        statusTag: {
+            text: 'In service', 
+            classes: 'govuk-tag--green'
+        },
+        researchNotes: [
+          'Need identified by UR',
+          'No research has been carried out on the proposed designs as of 21 May 2020'
+        ]
+      }) }}
+
+    </div>
+  </div>
+
+{% endblock %}
