@@ -1,2 +1,2 @@
 # ca-prototype-ur
-Carer‘s Allowance prototype for UR
+Carer‘s Allowance prototype for UR (Pegasus)
