@@ -17,12 +17,43 @@ href: 'javascript:history.back()'
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
         <form action="medical">
-            <h1 class="govuk-heading-l">
-                {{ titleText }}
-            </h1>
-            <p class="govuk-hint">If there has been more than one break in care, just tell us about the first one. You
-                can tell us about other breaks in care later.</p>
-            <br>
+        
+            {# If there are any existing breaks, overrides isFirstBreak to false #}
+            {% set isFirstBreak = true %}
+            {% for id, break in data.breaksStore %}
+                {% if break != '' %}
+                    {% set isFirstBreak = false %}
+                {% endif %}
+            {% endfor %}
+
+            {# If this is the first break and we're not changing an existing break #}
+            {% if isFirstBreak and not break %}
+                <h1 class="govuk-heading-l">
+                    {{ titleText }}
+                </h1>
+                <p class="govuk-hint">
+                    If there has been more than one break in care, just tell us about the first one. You
+                    can tell us about other breaks in care later.
+                </p>
+                <br>
+            {# Else if we're editing an existing break #}
+            {% elif break %}
+                <h1 class="govuk-heading-l">
+                    Date of the break in care
+                </h1>
+               
+              
+            {# Else must be a new break #}
+            {% else %}
+                <h1 class="govuk-heading-l">
+                    Date of the next break in care
+                </h1>
+                <p class="govuk-hint">
+                    Tell us about the next break in care. If you need to tell us about any more breaks, you can do this later.
+                </p>
+                <br>
+            {% endif%}
+            
             {{ govukDateInput ({
                 id: 'stop-care',
                 namePrefix: breakLoc + '[stop-care',
@@ -187,7 +218,12 @@ href: 'javascript:history.back()'
             <br>
             <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
             <button class="govuk-button" data-module="govuk-button" href="medical">
-                Continue
+                {# If editing a break, show save instead of continue #}
+                {% if break %}
+                    Save
+                {% else %}
+                    Continue
+                {% endif%}
             </button>
         </form>
     </div>
