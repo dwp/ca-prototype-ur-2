@@ -21,13 +21,13 @@
                     name: breakLoc + '[medical]',
                     fieldset: {
                         legend: {
-                        text: "Did you or John Smith stay somewhere that provided medical care during this time?",
+                        text: "Did you or John Smith receive medical care during this time?",
                         isPageHeading: true,
                         classes: "govuk-fieldset__legend--l"
                         }
                     },
                   hint: {
-                        text: 'For example, staying overnight in hospital, respite or a care home that provided medical treatment.'
+                        text: 'For example, any form of medical treatment in hospital, respite or a care home.'
                     },
                     items: [
                         {
@@ -65,9 +65,14 @@
                     </div>
                     </fieldset>
                 </div> #}
-                    <button class="govuk-button" data-module="govuk-button" href="list">
+                    <button class="govuk-button" data-module="govuk-button" href="medical">
+                {# If editing a break, show save instead of continue #}
+                {% if break %}
+                    Save
+                {% else %}
                     Continue
-                  </button>
+                {% endif%}
+            </button>
             <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
             </form>
         </div>

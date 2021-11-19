@@ -219,11 +219,9 @@ href: 'javascript:history.back()'
             <input type="hidden" name="selectedBreak" value={{ breakIndex }}>
             <button class="govuk-button" data-module="govuk-button" href="medical">
                 {# If editing a break, show save instead of continue #}
-                {% if break %}
-                    Save
-                {% else %}
+               
                     Continue
-                {% endif%}
+                
             </button>
         </form>
     </div>
