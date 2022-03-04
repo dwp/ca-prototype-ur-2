@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+{% set breakIndex = data['selectedBreak'] | uuid %}
+{% set breakLoc = 'breaksStore[' + breakIndex + ']' %}
+{% set break = data.breaksStore[breakIndex] %}
+{% block pageTitle %}
+    Did you provide care for at least 35 hours between Sunday 9 January 2022 and Saturday 15 January 2022?
+{% endblock %}
+{% block beforeContent %}
+    {{ super() }}
+    {{ govukBackLink ({
+        text: 'Back',
+        href: 'javascript:history.back()'
+    }) }}
+{% endblock %}
+{% block content %}
+<div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+            <form action="part-weeks1">
+               
+               <h1 class="govuk-heading-l">Alternative design</h1>
+              
+
+
+               
+                    <button class="govuk-button" data-module="govuk-button" href="medical">
+                    Continue
+                     </button>
+            </form>
+        </div>
+</div>
+{% endblock %}
